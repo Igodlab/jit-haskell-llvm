@@ -2,7 +2,7 @@
 
 This is an amateur tour around building JIT compilers. To add some spice to the challenge we are using Haskell! 
 
-This guide is based on (@smdiehl)[https://twitter.com/smdiehl)'s guide (link)[https://www.stephendiehl.com/llvm/]
+This guide is based on [@smdiehl](https://twitter.com/smdiehl)'s guide [link](https://www.stephendiehl.com/llvm/)
 
 This tutorial has the goal of teaching comiler techniques and LLVM specifically, not about teaching moderrn and sane software engineering principles. If you are a pro you will not find hard to fix deficiencies. 
 
