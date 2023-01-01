@@ -26,4 +26,12 @@ This tutorial has the goal of teaching comiler techniques and LLVM specifically,
 
 This guide will assume that we are well versed with intermidiate Haskell terms like Monads, Transformers and Applicatives. Also, very important, we are not using the most sophisticated code so sometimes we'll just do the "stupid thing" ie. low hanging fruit code implementations, because it just helps illustrating the main point rather than dwelling on advanced syntax.
 
+### Install LLVM 
 
+To begin with we need the **LLVM Compiler Insfrastructure**
+
+```
+$ git clone https://github.com/llvm/llvm-project.git
+```
+
+This will create the `llvm-project`
