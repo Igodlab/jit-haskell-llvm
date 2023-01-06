@@ -2,7 +2,7 @@
 
 This is an amateur tour around building JIT compilers. To add some spice to the challenge we are using Haskell! 
 
-This guide is based on [@smdiehl](https://twitter.com/smdiehl)'s guide [link](https://www.stephendiehl.com/llvm/)
+This guide is based on [@smdiehl](https://twitter.com/smdiehl)'s guide [link](https://www.stephendiehl.com/llvm/) on how to build Kaleidoscope a JIT compiled language.
 
 This tutorial has the goal of teaching comiler techniques and LLVM specifically, not about teaching moderrn and sane software engineering principles. If you are a pro you will not find hard to fix deficiencies. 
 
@@ -26,12 +26,47 @@ This tutorial has the goal of teaching comiler techniques and LLVM specifically,
 
 This guide will assume that we are well versed with intermidiate Haskell terms like Monads, Transformers and Applicatives. Also, very important, we are not using the most sophisticated code so sometimes we'll just do the "stupid thing" ie. low hanging fruit code implementations, because it just helps illustrating the main point rather than dwelling on advanced syntax.
 
-### Install LLVM 
+### Get LLVM and Haskell
 
-To begin with we need the **LLVM Compiler Insfrastructure**
+To begin with we need the **LLVM Compiler Insfrastructure**, we can either download it / build it from source from the official [LLVM site](https://releases.llvm.org/). In this guide we will be building everything with Nix thus cd to your root directory in your machine and git clone the `llvm-project` 
 
 ```
 $ git clone https://github.com/llvm/llvm-project.git
+$ cd llvm-project
 ```
 
-This will create the `llvm-project`
+Now, to access its features through Nix we need to create a `shell.nix` script, so you can create your custom branch and then follow the [NixOS - Build LLVM/clang from source](https://nixos.wiki/wiki/LLVM) to wrtie our `shell.nix`. After that open up the shell and cd to the directory of this project and open up another Nix shell. The latter one contains Haskell and GHC.
+
+```
+$ nix-shell
+[nix-shell]$ cd ~/jit-haskell-llvm
+[nix-shell]$ nix-shell
+```
+
+We can now check that we have everything needed for the project now:
+
+```
+[nix-shell]$ llvm-config --version
+13.0.1
+
+[nix-shell]$ llvm-as --version
+  LLVM version 13.0.1
+  ⠇
+
+[nix-shell]$ llvm-dis --version
+  LLVM version 13.0.1
+  ⠇
+
+[nix-shell]$ llc --version
+LLVM (http://llvm.org/):
+  LLVM version 13.0.1
+  Optimized build.
+  Default target: x86_64-unknown-linux-gnu
+  Host CPU: znver1
+  ⠇
+
+[nix-shell]$ ghc --version
+The Glorious Glasgow Haskell Compilation System, version 9.0.2
+```
+
+We have everything to get started! Let's get on to it!
