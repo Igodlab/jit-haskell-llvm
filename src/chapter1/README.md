@@ -3,10 +3,15 @@
 
 A quick description of a compiler pipeline 
 
- ```mermaid
-%% Example of sequence diagram
-  graph LR
-    A(source) -->B [lexer] -->C [parser] -->D [typechecker] -->E [codegen] -->F (a.out)
+ ```flow
+ st=start: source
+ op=>operation: lexer
+ op=>operation: parser
+ op=>operation: typechecker
+ op=>operation: codegen
+ e=>end: a.out
+
+ st->op->op->op->op->e
 ```
 
 
