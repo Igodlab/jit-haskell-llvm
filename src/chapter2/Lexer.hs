@@ -38,5 +38,5 @@ reserved :: String -> Parser ()
 reserved = Tok.reserved lexer 
 
 reservedOp :: String -> Parser ()
-reservedOp  Tok.reservedOp lexer 
+reservedOp = Tok.reservedOp lexer 
 
